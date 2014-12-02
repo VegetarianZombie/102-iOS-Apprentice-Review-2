@@ -38,7 +38,19 @@ class Story
     if type == .vampires {
       monsters = "vampires"
     }
-    return String(format: storyText, arguments: [name!, number!, monsters, name!, name!, verb!, monsters, name!])
+    
+    if verb != nil {
+        storyText = storyText.stringByReplacingOccurrencesOfString("<verb>", withString: verb!, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    if number != nil {
+        storyText = storyText.stringByReplacingOccurrencesOfString("<number>", withString: String(number!), options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    if name != nil {
+        storyText = storyText.stringByReplacingOccurrencesOfString("<name>", withString: name!, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
+    storyText = storyText.stringByReplacingOccurrencesOfString("<monsters>", withString: monsters, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    
+    return storyText
   }
   
   

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class NewStoryViewController: UIViewController {
+class NewStoryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var storyTitle: UITextField!
     @IBOutlet weak var monsterType: UISegmentedControl!
     @IBOutlet weak var winningStory: UITextView!
     @IBOutlet weak var losingStory: UITextView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     var newStory: Story?
+    var didCancel: Bool = false
     
     @IBAction func save(sender: AnyObject) {
         if storyTitle.text != "" && winningStory.text != "" && losingStory != "" {
@@ -28,14 +30,43 @@ class NewStoryViewController: UIViewController {
             newStory = Story(title: storyTitle.text, winStory: winningStory.text, loseStory: losingStory.text, type: storyType)
 
 
-            performSegueWithIdentifier("SaveStory", sender: nil)
+            performSegueWithIdentifier("DismissNewStory", sender: nil)
         } else {
             UIAlertView(title: "Validation Error", message: "Please fill out all of the fields.", delegate: nil, cancelButtonTitle: "OK").show()
         }
     }
     
+    @IBAction func cancelStory(sender: AnyObject!) {
+        didCancel = true
+        performSegueWithIdentifier("DismissNewStory", sender: nil)
+    }
+    
+    @IBAction func changeMonsterType(sender: UISegmentedControl!) {
+        if sender.selectedSegmentIndex == 0 {
+            backgroundImage.image = UIImage(named: "zombies")
+        } else {
+            backgroundImage.image = UIImage(named: "vampires")
+        }
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesutureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tapGesutureRecognizer)
     }
 
     override func didReceiveMemoryWarning() {

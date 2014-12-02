@@ -11,8 +11,8 @@ import UIKit
 class StorySelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var zombieStories: [Story]!
-    var vampireStories: [Story]!
+    var zombieStories: NSMutableArray!
+    var vampireStories: NSMutableArray!
     
     
     override func viewDidLoad() {
@@ -22,15 +22,15 @@ class StorySelectionViewController: UIViewController, UITableViewDataSource, UIT
       vampireStories = []
       title = "Story Time!"
       
-      var winStory = "%@ entered the room and saw %d %@! %@ ran down the hall. Sadly, %@ was %@ by all the %@! \n\nPoor %@. Better luck next time!"
-      var loseStory = "%@ entered the room and saw %d %@! Without missing a beat, %@ %@ all of the %@! \n\nPoor %@. Fantastic! \n\n%@ will live to fight another day."
+      var winStory = "<name> entered the room and saw <number> <monsters>! <name> ran down the hall. Sadly, <name> was <verb> by all the <monsters>! \n\nPoor <name>. Better luck next time!"
+      var loseStory = "<name> entered the room and saw <number> <monsters>! Without missing a beat, <name> <verb> all of the <monsters>! \n\nPoor <monsters>. Fantastic! \n\n<name> will live to fight another day."
       let story = Story(title: "Attack of the Zombies", winStory: winStory, loseStory: loseStory, type: .zombies)
-      zombieStories.append(story)
+      zombieStories.addObject(story)
       
-      winStory = "%@ entered the room and saw %d %@! %@ ran down the hall. Sadly, %@ was %@ by all the %@! \n\nPoor %@. Better luck next time!"
-      loseStory = "%@ entered the room and saw %d %@! Without missing a beat, %@ %@ all of the %@! \n\nPoor %@. Fantastic! \n\n%@ will live to fight another day."
+        winStory = "<name> entered the room and saw <number> <monsters>! <name> ran down the hall. Sadly, <name> was <verb> by all the <monsters>! \n\nPoor <name>. Better luck next time!"
+        loseStory = "<name> entered the room and saw <number> <monsters>! Without missing a beat, <name> <verb> all of the <monsters>! \n\nPoor <monsters>. Fantastic! \n\n<name> will live to fight another day."
       let anotherStory = Story(title: "Attack of the Vampires", winStory: winStory, loseStory: loseStory, type: .vampires)
-      vampireStories.append(anotherStory)
+      vampireStories.addObject(anotherStory)
       
     }
 
@@ -63,9 +63,9 @@ class StorySelectionViewController: UIViewController, UITableViewDataSource, UIT
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
-    var story = zombieStories[indexPath.row]
+    var story = zombieStories[indexPath.row] as Story
     if indexPath.section == 1 {
-      story = vampireStories[indexPath.row]
+      story = vampireStories[indexPath.row] as Story
     }
     cell.textLabel.text = story.title
     
@@ -84,9 +84,9 @@ class StorySelectionViewController: UIViewController, UITableViewDataSource, UIT
       if let indexPath = tableView.indexPathForSelectedRow() {
         let storyViewController = segue.destinationViewController as ViewController
         if indexPath.section == 0 {
-          storyViewController.currentStory = zombieStories[indexPath.row]
+          storyViewController.currentStory = zombieStories[indexPath.row] as? Story
         } else {
-          storyViewController.currentStory = vampireStories[indexPath.row]
+          storyViewController.currentStory = vampireStories[indexPath.row] as? Story
         }
       }
     }

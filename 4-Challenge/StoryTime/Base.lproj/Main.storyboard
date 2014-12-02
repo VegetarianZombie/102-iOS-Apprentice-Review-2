@@ -76,6 +76,15 @@
                             <imageView userInteractionEnabled="NO" alpha="0.10000000149011612" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zombies" translatesAutoresizingMaskIntoConstraints="NO" id="REO-vm-1Gd">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKT-M1-LWp">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dimissKeyboard:" destination="aNz-HL-hCs" eventType="touchUpInside" id="Txj-we-PuX"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGe-AY-68G">
                                 <rect key="frame" x="261" y="20" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -86,6 +95,9 @@
                                 <rect key="frame" x="16" y="57" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aNz-HL-hCs" id="KtN-uy-TEL"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monster Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77n-nn-RjS">
                                 <rect key="frame" x="248" y="104" width="104" height="21"/>
@@ -102,6 +114,9 @@
                                     <segment title="Zombies"/>
                                     <segment title="Vampires"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeMonsterType:" destination="aNz-HL-hCs" eventType="valueChanged" id="aMP-T8-AZC"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Story" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEW-bY-DcJ">
                                 <rect key="frame" x="246" y="176" width="108" height="21"/>
@@ -117,7 +132,10 @@
                                 </constraints>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aNz-HL-hCs" id="Mfg-du-F29"/>
+                                </connections>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" text="Write the winning store here." translatesAutoresizingMaskIntoConstraints="NO" id="9mB-IM-dvl">
                                 <rect key="frame" x="22" y="326" width="562" height="84"/>
@@ -128,6 +146,9 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aNz-HL-hCs" id="HeV-o8-20n"/>
+                                </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Losing Story" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxc-th-8dm">
                                 <rect key="frame" x="252" y="297" width="97" height="21"/>
@@ -135,8 +156,18 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRr-XW-XYf">
+                                <rect key="frame" x="190" y="424" width="89" height="30"/>
+                                <state key="normal" title="Cancel Story">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelStory:" destination="aNz-HL-hCs" eventType="touchUpInside" id="4Jf-KH-HkG"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elv-XR-pCG">
-                                <rect key="frame" x="263" y="425" width="75" height="30"/>
+                                <rect key="frame" x="340" y="424" width="75" height="30"/>
                                 <state key="normal" title="Save Story">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,10 +181,13 @@
                         <constraints>
                             <constraint firstItem="tOb-3y-MdM" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" constant="22" id="1S4-CK-yoM"/>
                             <constraint firstItem="xnt-3t-qyE" firstAttribute="width" secondItem="9mB-IM-dvl" secondAttribute="width" id="86u-9z-58j"/>
+                            <constraint firstItem="elv-XR-pCG" firstAttribute="top" secondItem="9mB-IM-dvl" secondAttribute="bottom" constant="14" id="B88-za-kd5"/>
                             <constraint firstAttribute="centerX" secondItem="hGe-AY-68G" secondAttribute="centerX" id="CyO-xx-wDY"/>
                             <constraint firstItem="xnt-3t-qyE" firstAttribute="top" secondItem="hGe-AY-68G" secondAttribute="bottom" constant="16" id="DRt-Bt-tfA"/>
+                            <constraint firstItem="kKT-M1-LWp" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" id="EOV-e5-0ST"/>
                             <constraint firstItem="1Ic-fS-ebR" firstAttribute="top" secondItem="REO-vm-1Gd" secondAttribute="bottom" id="Emk-f6-xAa"/>
                             <constraint firstItem="REO-vm-1Gd" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" id="G3j-hq-Q0H"/>
+                            <constraint firstItem="TRr-XW-XYf" firstAttribute="top" secondItem="9mB-IM-dvl" secondAttribute="bottom" constant="14" id="GvK-kU-tv1"/>
                             <constraint firstItem="xnt-3t-qyE" firstAttribute="width" secondItem="ENF-yM-Kcw" secondAttribute="width" id="I9x-YU-26a"/>
                             <constraint firstItem="tOb-3y-MdM" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" constant="22" id="Jiz-dr-Jif"/>
                             <constraint firstItem="tOb-3y-MdM" firstAttribute="top" secondItem="JEW-bY-DcJ" secondAttribute="bottom" constant="8" id="LzR-v1-2Jk"/>
@@ -162,6 +196,7 @@
                             <constraint firstItem="hGe-AY-68G" firstAttribute="top" secondItem="88r-6n-Yic" secondAttribute="bottom" id="Nko-JD-EfE"/>
                             <constraint firstAttribute="trailing" secondItem="xnt-3t-qyE" secondAttribute="trailing" constant="16" id="Plq-fe-mkN"/>
                             <constraint firstItem="JEW-bY-DcJ" firstAttribute="top" secondItem="ENF-yM-Kcw" secondAttribute="bottom" constant="15" id="Tv9-2z-aLP"/>
+                            <constraint firstItem="1Ic-fS-ebR" firstAttribute="top" secondItem="kKT-M1-LWp" secondAttribute="bottom" id="Ypr-zc-1qf"/>
                             <constraint firstAttribute="centerX" secondItem="77n-nn-RjS" secondAttribute="centerX" id="Zi2-hF-NbA"/>
                             <constraint firstItem="xnt-3t-qyE" firstAttribute="width" secondItem="tOb-3y-MdM" secondAttribute="width" constant="6" id="aSZ-ed-iJK"/>
                             <constraint firstAttribute="trailing" secondItem="ENF-yM-Kcw" secondAttribute="trailing" constant="16" id="ayv-8L-em8"/>
@@ -170,17 +205,21 @@
                             <constraint firstAttribute="trailing" secondItem="tOb-3y-MdM" secondAttribute="trailing" constant="16" id="cG4-xg-1vr"/>
                             <constraint firstItem="Mxc-th-8dm" firstAttribute="top" secondItem="tOb-3y-MdM" secondAttribute="bottom" constant="8" id="gwV-ng-R6N"/>
                             <constraint firstItem="9mB-IM-dvl" firstAttribute="top" secondItem="Mxc-th-8dm" secondAttribute="bottom" constant="8" id="hnK-2U-hy2"/>
-                            <constraint firstItem="elv-XR-pCG" firstAttribute="top" secondItem="9mB-IM-dvl" secondAttribute="bottom" constant="15" id="hoB-6h-hGA"/>
-                            <constraint firstAttribute="centerX" secondItem="elv-XR-pCG" secondAttribute="centerX" id="lcZ-ws-WKf"/>
+                            <constraint firstAttribute="trailing" secondItem="kKT-M1-LWp" secondAttribute="trailing" id="lGT-hD-2rn"/>
+                            <constraint firstAttribute="centerX" secondItem="TRr-XW-XYf" secondAttribute="centerX" constant="65.5" id="o8i-kP-tat"/>
                             <constraint firstItem="REO-vm-1Gd" firstAttribute="top" secondItem="Vwe-60-Vlb" secondAttribute="top" id="og4-Ij-mih"/>
                             <constraint firstAttribute="trailing" secondItem="REO-vm-1Gd" secondAttribute="trailing" id="p2M-TO-bK8"/>
                             <constraint firstItem="77n-nn-RjS" firstAttribute="top" secondItem="xnt-3t-qyE" secondAttribute="bottom" constant="17" id="tcf-PG-Cpt"/>
                             <constraint firstAttribute="trailing" secondItem="9mB-IM-dvl" secondAttribute="trailing" constant="16" id="tys-rH-3gY"/>
                             <constraint firstItem="xnt-3t-qyE" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" constant="16" id="wCz-4S-5wa"/>
+                            <constraint firstItem="elv-XR-pCG" firstAttribute="leading" secondItem="TRr-XW-XYf" secondAttribute="trailing" constant="61" id="y1d-5y-LUN"/>
                             <constraint firstItem="9mB-IM-dvl" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" constant="22" id="z5d-0h-YHb"/>
                             <constraint firstItem="ENF-yM-Kcw" firstAttribute="leading" secondItem="Vwe-60-Vlb" secondAttribute="leading" constant="16" id="zOC-jq-Ei7"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="kKT-M1-LWp"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="86u-9z-58j"/>
                                 <exclude reference="1S4-CK-yoM"/>
@@ -189,11 +228,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="REO-vm-1Gd" id="ZFl-ME-amK"/>
                         <outlet property="losingStory" destination="9mB-IM-dvl" id="egZ-Gv-8NZ"/>
                         <outlet property="monsterType" destination="ENF-yM-Kcw" id="QjO-EZ-gPQ"/>
                         <outlet property="storyTitle" destination="xnt-3t-qyE" id="hyE-Xy-GfH"/>
                         <outlet property="winningStory" destination="tOb-3y-MdM" id="vcy-Gw-GnO"/>
-                        <segue destination="Svb-l6-vT5" kind="unwind" identifier="SaveStory" unwindAction="close:" id="RRO-Ac-jzB"/>
+                        <segue destination="Svb-l6-vT5" kind="unwind" identifier="DismissNewStory" unwindAction="close:" id="RRO-Ac-jzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vlS-Aa-Ssj" userLabel="First Responder" sceneMemberID="firstResponder"/>
