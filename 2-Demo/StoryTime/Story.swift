@@ -40,18 +40,22 @@ class Story
     }
     
     if verb != nil {
-        storyText = storyText.stringByReplacingOccurrencesOfString("<verb>", withString: verb!, options: NSStringCompareOptions.LiteralSearch, range: nil)
+        storyText = replaceText("<verb>", haystack: verb!, text: storyText)
     }
     if number != nil {
-        storyText = storyText.stringByReplacingOccurrencesOfString("<number>", withString: String(number!), options: NSStringCompareOptions.LiteralSearch, range: nil)
+        storyText = replaceText("<number>", haystack: String(number!), text: storyText)
     }
     if name != nil {
-        storyText = storyText.stringByReplacingOccurrencesOfString("<name>", withString: name!, options: NSStringCompareOptions.LiteralSearch, range: nil)
+        storyText = replaceText("<name>", haystack: name!, text: storyText)
     }
-    storyText = storyText.stringByReplacingOccurrencesOfString("<monsters>", withString: monsters, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    storyText = replaceText("<monsters>", haystack: monsters, text: storyText)
     
     return storyText
   }
+  
+    private func replaceText(needle: String, haystack: String, text: String) -> String {
+        return text.stringByReplacingOccurrencesOfString(needle, withString: haystack, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    }
   
   
 }

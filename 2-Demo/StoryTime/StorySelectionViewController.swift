@@ -18,8 +18,8 @@ class StorySelectionViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      zombieStories = []
-      vampireStories = []
+      zombieStories = NSMutableArray()
+      vampireStories = NSMutableArray()
       title = "Story Time!"
       
       var winStory = "<name> entered the room and saw <number> <monsters>! <name> ran down the hall. Sadly, <name> was <verb> by all the <monsters>! \n\nPoor <name>. Better luck next time!"

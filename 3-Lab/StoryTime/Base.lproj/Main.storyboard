@@ -49,7 +49,7 @@
                     <navigationItem key="navigationItem" id="5nj-Da-cnh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dVr-CG-bqy">
                             <connections>
-                                <segue destination="aNz-HL-hCs" kind="presentation" identifier="NewStory" id="EqH-qs-OtQ"/>
+                                <segue destination="aNz-HL-hCs" kind="presentation" id="acu-vB-zaS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,7 +96,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="aNz-HL-hCs" id="KtN-uy-TEL"/>
+                                    <outlet property="delegate" destination="aNz-HL-hCs" id="GDd-Yt-gF5"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monster Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77n-nn-RjS">
@@ -114,9 +114,7 @@
                                     <segment title="Zombies"/>
                                     <segment title="Vampires"/>
                                 </segments>
-                                <connections>
-                                    <action selector="changeMonsterType:" destination="aNz-HL-hCs" eventType="valueChanged" id="aMP-T8-AZC"/>
-                                </connections>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Story" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEW-bY-DcJ">
                                 <rect key="frame" x="246" y="176" width="108" height="21"/>
@@ -124,19 +122,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" text="Write the winning store here." translatesAutoresizingMaskIntoConstraints="NO" id="tOb-3y-MdM">
-                                <rect key="frame" x="22" y="205" width="562" height="84"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="CMD-4b-794"/>
-                                </constraints>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="aNz-HL-hCs" id="Mfg-du-F29"/>
-                                </connections>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" text="Write the winning store here." translatesAutoresizingMaskIntoConstraints="NO" id="9mB-IM-dvl">
                                 <rect key="frame" x="22" y="326" width="562" height="84"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -176,6 +161,19 @@
                                     <action selector="save:" destination="aNz-HL-hCs" eventType="touchUpInside" id="XN7-fx-26n"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" text="Write the winning store here." translatesAutoresizingMaskIntoConstraints="NO" id="tOb-3y-MdM">
+                                <rect key="frame" x="22" y="205" width="562" height="84"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="CMD-4b-794"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aNz-HL-hCs" id="Mfg-du-F29"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
