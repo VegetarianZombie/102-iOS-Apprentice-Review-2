@@ -62,13 +62,14 @@ class StorySelectionViewController: UIViewController, UITableViewDataSource, UIT
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell
-    var story = zombieStories[indexPath.row] as Story
-    if indexPath.section == 1 {
-      story = vampireStories[indexPath.row] as Story
+    let cell = tableView.dequeueReusableCellWithIdentifier("StoryTimeCell", forIndexPath: indexPath) as UITableViewCell
+    var story: Story!
+    if indexPath.section == 0 {
+        story = zombieStories[indexPath.row] as Story
+    } else {
+        story = vampireStories[indexPath.row] as Story
     }
     cell.textLabel.text = story.title
-    
     return cell
   }
   

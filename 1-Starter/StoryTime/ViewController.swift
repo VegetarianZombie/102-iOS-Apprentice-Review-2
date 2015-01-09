@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var currentSwitchValue = true
     var storyType = 0
     var monsters = "zombies"
+    var currentStory: Story?
     
     @IBOutlet weak var backgroundImage: UIImageView! // background image
     @IBOutlet weak var segmentedControl: UISegmentedControl! // story selection
@@ -30,6 +31,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if currentStory != nil {
+            var image: UIImage!
+            if currentStory?.type == StoryType.zombies {
+                image = UIImage(named: "zombies")
+            } else {
+                image = UIImage(named: "vampires")
+            }
+            backgroundImage.image = image
+        }
+
         
         textview.layer.borderColor = UIColor.darkGrayColor().CGColor
         textview.layer.borderWidth = 1.0
@@ -114,10 +126,11 @@ class ViewController: UIViewController {
     func populateStory() {
         println("populateStory = \(currentSwitchValue)")
         
-        if (currentSwitchValue) {
-            textview.text = "\(textField1.text) entered the room and saw \(currentNumber) \(monsters)! \(textField1.text) \(textField2.text) down the hall. Sadly, \(textField1.text) was killed by all of the \(monsters)! \n\nPoor \(textField1.text). \n\nBetter luck next time!"
-        } else {
-            textview.text = "\(textField1.text) entered the room and saw \(currentNumber) \(monsters)! \(textField1.text) \(textField2.text) down the hall. Without missing a beat, \(textField1.text) killed all of the \(monsters)! \n\nFantastic! \n\nOur hero will live to fight another day."
+        if currentStory != nil {
+            currentStory?.name = textField1.text
+            currentStory?.verb = textField2.text
+            currentStory?.number = Int(sliderControl.value)
+            textview.text = currentStory?.generateStory(switchControl.on)
         }
     }
     

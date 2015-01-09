@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     /* needed for lab */
     @IBOutlet weak var numberLabel: UILabel! // label for number
     
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         

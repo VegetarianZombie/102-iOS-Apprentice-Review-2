@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="739-i2-JXg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="739-i2-JXg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -228,7 +228,6 @@
                     <connections>
                         <outlet property="backgroundImage" destination="TTX-HY-ykL" id="CZ8-1E-SN5"/>
                         <outlet property="button" destination="50x-Hf-p9W" id="AVG-va-Vhl"/>
-                        <outlet property="numberLabel" destination="5QH-BP-NwG" id="93z-s3-hGt"/>
                         <outlet property="segmentedControl" destination="wlG-2p-mFs" id="WXV-8b-CVE"/>
                         <outlet property="sliderControl" destination="1Wv-hb-KMs" id="83t-yM-28k"/>
                         <outlet property="switchControl" destination="acf-Mq-5k7" id="neX-4E-Nq0"/>

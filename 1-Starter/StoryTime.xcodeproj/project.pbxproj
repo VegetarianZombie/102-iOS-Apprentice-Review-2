@@ -17,6 +17,7 @@
 		CF3F4B2E1A265D930041B54E /* rwdevcon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3F4B2C1A265D930041B54E /* rwdevcon-logo.png */; };
 		CF7DEF4F1A38A1B6006E928A /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DEF4E1A38A1B6006E928A /* Story.swift */; };
 		CF7DEF511A38A21D006E928A /* stories.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF7DEF501A38A21D006E928A /* stories.txt */; };
+		CF7DEF531A38A71B006E928A /* StorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DEF521A38A71B006E928A /* StorySelectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		CF3F4B2C1A265D930041B54E /* rwdevcon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rwdevcon-logo.png"; sourceTree = "<group>"; };
 		CF7DEF4E1A38A1B6006E928A /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		CF7DEF501A38A21D006E928A /* stories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stories.txt; sourceTree = "<group>"; };
+		CF7DEF521A38A71B006E928A /* StorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySelectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				CF7DEF4E1A38A1B6006E928A /* Story.swift */,
 				04E8D5201A1AAE7400EBF006 /* AppDelegate.swift */,
 				04E8D5221A1AAE7400EBF006 /* ViewController.swift */,
+				CF7DEF521A38A71B006E928A /* StorySelectionViewController.swift */,
 				04E8D5241A1AAE7400EBF006 /* Main.storyboard */,
 				04E8D5271A1AAE7400EBF006 /* Images.xcassets */,
 				04E8D5291A1AAE7400EBF006 /* LaunchScreen.xib */,
@@ -230,6 +233,7 @@
 				04E8D5231A1AAE7400EBF006 /* ViewController.swift in Sources */,
 				04E8D5211A1AAE7400EBF006 /* AppDelegate.swift in Sources */,
 				CF7DEF4F1A38A1B6006E928A /* Story.swift in Sources */,
+				CF7DEF531A38A71B006E928A /* StorySelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
