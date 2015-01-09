@@ -14,7 +14,9 @@ class ViewController: UIViewController {
     var currentSwitchValue = true
     var storyType = 0
     var monsters = "zombies"
-    var currentStory: Story?
+  
+    // UNCOMMENT OUT CODE
+    // var currentStory: Story?
     
     @IBOutlet weak var backgroundImage: UIImageView! // background image
     @IBOutlet weak var segmentedControl: UISegmentedControl! // story selection
@@ -31,7 +33,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+      // UNCOMMENT OUT CODE
+      /**
         if currentStory != nil {
             var image: UIImage!
             if currentStory?.type == StoryType.zombies {
@@ -41,7 +45,7 @@ class ViewController: UIViewController {
             }
             backgroundImage.image = image
         }
-
+      **/
         
         textview.layer.borderColor = UIColor.darkGrayColor().CGColor
         textview.layer.borderWidth = 1.0
@@ -64,9 +68,10 @@ class ViewController: UIViewController {
     
     @IBAction func segmentedControllerChanged(sender: UISegmentedControl) {
         storyType = sender.selectedSegmentIndex
-        
+      
+        // UNCOMMENT OUT CODE
+        /**
         var image : UIImage!
-        
         switch storyType {
         case 0: // zombies
             image = UIImage(named:"zombies")
@@ -84,6 +89,7 @@ class ViewController: UIViewController {
         
         resetStory()
         backgroundImage.image = image
+        **/
     }
     
     @IBAction func sliderMoved(sender: UISlider) {
@@ -125,13 +131,16 @@ class ViewController: UIViewController {
     
     func populateStory() {
         println("populateStory = \(currentSwitchValue)")
-        
+      
+        // UNCOMMENT OUT CODE
+        /**
         if currentStory != nil {
             currentStory?.name = textField1.text
             currentStory?.verb = textField2.text
             currentStory?.number = Int(sliderControl.value)
             textview.text = currentStory?.generateStory(switchControl.on)
         }
+        **/
     }
     
     func resetStory() {

@@ -18,3 +18,4 @@ Win Story:
 Lose Story:
 
 <name> entered the room and saw <number> <monsters>! Without missing a beat, <name> <verb> all of the <monsters>! \n\nPoor <monsters>. Fantastic! \n\n<name> will live to fight another day.
+
