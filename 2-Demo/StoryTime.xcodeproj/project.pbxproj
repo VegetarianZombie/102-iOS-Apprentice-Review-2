@@ -13,10 +13,12 @@
 		04E8D5281A1AAE7400EBF006 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E8D5271A1AAE7400EBF006 /* Images.xcassets */; };
 		04E8D52B1A1AAE7400EBF006 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8D5291A1AAE7400EBF006 /* LaunchScreen.xib */; };
 		04E8D5371A1AAE7400EBF006 /* StoryTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E8D5361A1AAE7400EBF006 /* StoryTimeTests.swift */; };
-		CF8486371A264093008B91E7 /* rwdevcon-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8486351A264093008B91E7 /* rwdevcon-bg.png */; };
-		CF8486381A264093008B91E7 /* rwdevcon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8486361A264093008B91E7 /* rwdevcon-logo.png */; };
-		CF91E2881A2513800084CC72 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF91E2871A2513800084CC72 /* Story.swift */; };
-		CF91E28E1A2516EF0084CC72 /* StorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF91E28D1A2516EF0084CC72 /* StorySelectionViewController.swift */; };
+		CF1FB1A51A60673D00C7677D /* code.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF1FB1A41A60673D00C7677D /* code.txt */; };
+		CF3F4B2D1A265D930041B54E /* rwdevcon-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3F4B2B1A265D930041B54E /* rwdevcon-bg.png */; };
+		CF3F4B2E1A265D930041B54E /* rwdevcon-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3F4B2C1A265D930041B54E /* rwdevcon-logo.png */; };
+		CF4ABBE61A7BCBB600BEB35B /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4ABBE51A7BCBB600BEB35B /* Story.swift */; };
+		CF4ABBE81A7BE07300BEB35B /* StorySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4ABBE71A7BE07300BEB35B /* StorySelectionViewController.swift */; };
+		CF7DEF511A38A21D006E928A /* stories.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF7DEF501A38A21D006E928A /* stories.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +42,12 @@
 		04E8D5301A1AAE7400EBF006 /* StoryTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoryTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E8D5351A1AAE7400EBF006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E8D5361A1AAE7400EBF006 /* StoryTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryTimeTests.swift; sourceTree = "<group>"; };
-		CF8486351A264093008B91E7 /* rwdevcon-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rwdevcon-bg.png"; sourceTree = "<group>"; };
-		CF8486361A264093008B91E7 /* rwdevcon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rwdevcon-logo.png"; sourceTree = "<group>"; };
-		CF91E2871A2513800084CC72 /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		CF91E28D1A2516EF0084CC72 /* StorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySelectionViewController.swift; sourceTree = "<group>"; };
+		CF1FB1A41A60673D00C7677D /* code.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code.txt; sourceTree = "<group>"; };
+		CF3F4B2B1A265D930041B54E /* rwdevcon-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rwdevcon-bg.png"; sourceTree = "<group>"; };
+		CF3F4B2C1A265D930041B54E /* rwdevcon-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rwdevcon-logo.png"; sourceTree = "<group>"; };
+		CF4ABBE51A7BCBB600BEB35B /* Story.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		CF4ABBE71A7BE07300BEB35B /* StorySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorySelectionViewController.swift; sourceTree = "<group>"; };
+		CF7DEF501A38A21D006E928A /* stories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stories.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,16 +89,18 @@
 		04E8D51D1A1AAE7400EBF006 /* StoryTime */ = {
 			isa = PBXGroup;
 			children = (
-				CF8486351A264093008B91E7 /* rwdevcon-bg.png */,
-				CF8486361A264093008B91E7 /* rwdevcon-logo.png */,
+				CF3F4B2B1A265D930041B54E /* rwdevcon-bg.png */,
+				CF3F4B2C1A265D930041B54E /* rwdevcon-logo.png */,
 				04E8D5201A1AAE7400EBF006 /* AppDelegate.swift */,
+				CF4ABBE51A7BCBB600BEB35B /* Story.swift */,
 				04E8D5221A1AAE7400EBF006 /* ViewController.swift */,
-				CF91E2871A2513800084CC72 /* Story.swift */,
-				CF91E28D1A2516EF0084CC72 /* StorySelectionViewController.swift */,
 				04E8D5241A1AAE7400EBF006 /* Main.storyboard */,
+				CF4ABBE71A7BE07300BEB35B /* StorySelectionViewController.swift */,
 				04E8D5271A1AAE7400EBF006 /* Images.xcassets */,
 				04E8D5291A1AAE7400EBF006 /* LaunchScreen.xib */,
 				04E8D51E1A1AAE7400EBF006 /* Supporting Files */,
+				CF7DEF501A38A21D006E928A /* stories.txt */,
+				CF1FB1A41A60673D00C7677D /* code.txt */,
 			);
 			path = StoryTime;
 			sourceTree = "<group>";
@@ -204,11 +210,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8486371A264093008B91E7 /* rwdevcon-bg.png in Resources */,
+				CF7DEF511A38A21D006E928A /* stories.txt in Resources */,
+				CF3F4B2D1A265D930041B54E /* rwdevcon-bg.png in Resources */,
 				04E8D5261A1AAE7400EBF006 /* Main.storyboard in Resources */,
 				04E8D52B1A1AAE7400EBF006 /* LaunchScreen.xib in Resources */,
 				04E8D5281A1AAE7400EBF006 /* Images.xcassets in Resources */,
-				CF8486381A264093008B91E7 /* rwdevcon-logo.png in Resources */,
+				CF3F4B2E1A265D930041B54E /* rwdevcon-logo.png in Resources */,
+				CF1FB1A51A60673D00C7677D /* code.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +236,8 @@
 			files = (
 				04E8D5231A1AAE7400EBF006 /* ViewController.swift in Sources */,
 				04E8D5211A1AAE7400EBF006 /* AppDelegate.swift in Sources */,
-				CF91E2881A2513800084CC72 /* Story.swift in Sources */,
-				CF91E28E1A2516EF0084CC72 /* StorySelectionViewController.swift in Sources */,
+				CF4ABBE61A7BCBB600BEB35B /* Story.swift in Sources */,
+				CF4ABBE81A7BE07300BEB35B /* StorySelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

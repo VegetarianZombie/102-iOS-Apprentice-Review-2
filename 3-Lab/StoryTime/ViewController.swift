@@ -6,31 +6,18 @@
 //  Copyright (c) 2014 Tammy Coron. All rights reserved.
 //
 
-/*  LAB WORK
-        1) Add a new IBOutlet named numberLabel.
-        2) Connect numberLabel to the "number label" on the storyboard.
-        3) Modify the sliderMoved method so that it displays (in the newly created outlet) the currently selected number: "Number (x)".
-        4) Add validation so users can't create a bogus story.
-            a. Add an alert view that appears when the user taps the generate story button. Only show this if the two text fields are empty.
-            b. Disable the "generate story" button until the two text fields have been populated.
-               Note: the textfield delegates have already been connected within the storyboard.
-
-    CHALLENGE
-        1) Add another poster (image asset) for the Alien story.
-        2) Modify the segmented control to allow for a third selection (Aliens).
-        3) Modify the segmentedControllerChanged method to populate the necessary values: backgroundImage, monsters, and storyType.
-        4) Use NSLocalization.
-*/
-
 import UIKit
 
 class ViewController: UIViewController {
 
     var currentNumber = 50
     var currentSwitchValue = true
+    var storyType = 0
     var monsters = "zombies"
-    var currentStory: Story?
   
+    // UNCOMMENT OUT CODE
+     var currentStory: Story?
+    
     @IBOutlet weak var backgroundImage: UIImageView! // background image
     @IBOutlet weak var segmentedControl: UISegmentedControl! // story selection
     @IBOutlet weak var textField1: UITextField! // name
@@ -46,19 +33,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      // UNCOMMENT OUT CODE
+        if currentStory != nil {
+            var image: UIImage!
+            if currentStory?.type == StoryType.zombies {
+                image = UIImage(named: "zombies")
+            } else {
+                image = UIImage(named: "vampires")
+            }
+            backgroundImage.image = image
+        }
         
         textview.layer.borderColor = UIColor.darkGrayColor().CGColor
         textview.layer.borderWidth = 1.0
-
-        var image: UIImage!
-        if currentStory?.type == StoryType.zombies {
-          image = UIImage(named:"zombies")
-        } else {
-          image = UIImage(named: "vampires")
-        }
-        backgroundImage.image = image
-
-      
+        
         /* needed for lab */
         numberLabel.text = "Number (\(currentNumber))"
         
@@ -66,6 +55,8 @@ class ViewController: UIViewController {
         checkValidationStatus()
     }
 
+
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -75,7 +66,26 @@ class ViewController: UIViewController {
         textField2.resignFirstResponder()
     }
     
- 
+    @IBAction func segmentedControllerChanged(sender: UISegmentedControl) {
+        storyType = sender.selectedSegmentIndex
+      
+        // UNCOMMENT OUT CODE
+
+        var image : UIImage!
+        switch storyType {
+        case 0:
+            image = UIImage(named:"zombies")
+            monsters = "zombies"
+        case 1:
+            image = UIImage(named:"vampires")
+            monsters = "vampires"
+        default:
+            sender.tag = 0
+        }
+        resetStory()
+        backgroundImage.image = image
+
+    }
     
     @IBAction func sliderMoved(sender: UISlider) {
         currentNumber = lroundf(sender.value)
@@ -115,14 +125,22 @@ class ViewController: UIViewController {
     }
     
     func populateStory() {
-      if currentStory != nil {
-        currentStory?.name = textField1.text
-        currentStory?.verb = textField2.text
-        currentStory?.number = Int(sliderControl.value)
-        textview.text = currentStory?.generateStory(switchControl.on)
-      }
+      
+        // UNCOMMENT OUT CODE
+
+        if currentStory != nil {
+            currentStory?.name = textField1.text
+            currentStory?.verb = textField2.text
+            currentStory?.number = Int(sliderControl.value)
+            textview.text = currentStory?.generateStory(switchControl.on)
+        }
+
     }
+  
+  override func viewWillAppear(animated: Bool) {
     
+  }
+  
     func resetStory() {
         textField1.text = ""
         textField2.text = ""

@@ -73,20 +73,15 @@ class ViewController: UIViewController {
         /**
         var image : UIImage!
         switch storyType {
-        case 0: // zombies
+        case 0:
             image = UIImage(named:"zombies")
             monsters = "zombies"
-        case 1: // vampires
+        case 1:
             image = UIImage(named:"vampires")
             monsters = "vampires"
-        /* needed for challenge */
-        case 2: // aliens
-            image = UIImage(named:"aliens")
-            monsters = "aliens"
         default:
             sender.tag = 0
         }
-        
         resetStory()
         backgroundImage.image = image
         **/
@@ -130,7 +125,6 @@ class ViewController: UIViewController {
     }
     
     func populateStory() {
-        println("populateStory = \(currentSwitchValue)")
       
         // UNCOMMENT OUT CODE
         /**
@@ -142,7 +136,11 @@ class ViewController: UIViewController {
         }
         **/
     }
+  
+  override func viewWillAppear(animated: Bool) {
     
+  }
+  
     func resetStory() {
         textField1.text = ""
         textField2.text = ""

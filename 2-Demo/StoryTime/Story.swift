@@ -2,8 +2,8 @@
 //  Story.swift
 //  StoryTime
 //
-//  Created by Brian Moakley on 11/25/14.
-//  Copyright (c) 2014 Tammy Coron. All rights reserved.
+//  Created by Brian Moakley on 1/30/15.
+//  Copyright (c) 2015 Tammy Coron. All rights reserved.
 //
 
 import Foundation
@@ -12,17 +12,17 @@ enum StoryType {
   case zombies, vampires
 }
 
-class Story
-{
-  var title : String
-  var name : String?
-  var verb : String?
-  var number : Int?
-  var winStory: String
-  var loseStory: String
+class Story {
+  
+  var title: String
+  var name: String?
+  var verb: String?
+  var number: Int?
+  var winStory: String?
+  var loseStory: String?
   var type: StoryType
   
-  init(title: String, winStory:String, loseStory: String, type: StoryType) {
+  init(title: String, winStory: String, loseStory: String, type: StoryType) {
     self.title = title
     self.winStory = winStory
     self.loseStory = loseStory
@@ -30,9 +30,16 @@ class Story
   }
   
   func generateStory(monstersWin: Bool) -> String {
-    var storyText = loseStory
+    var storyText = ""
+    
     if monstersWin {
-      storyText = winStory
+      if let winStory = winStory {
+        storyText = winStory
+      }
+    } else {
+      if let loseStory = loseStory {
+        storyText = loseStory
+      }
     }
     var monsters = "zombies"
     if type == .vampires {
@@ -40,22 +47,22 @@ class Story
     }
     
     if verb != nil {
-        storyText = replaceText("<verb>", haystack: verb!, text: storyText)
+      storyText = replaceText("<verb>", withText: verb!, inString: storyText)
     }
     if number != nil {
-        storyText = replaceText("<number>", haystack: String(number!), text: storyText)
+      storyText = replaceText("<number>", withText: String(number!), inString: storyText)
     }
     if name != nil {
-        storyText = replaceText("<name>", haystack: name!, text: storyText)
+      storyText = replaceText("<name>", withText: name!, inString: storyText)
     }
-    storyText = replaceText("<monsters>", haystack: monsters, text: storyText)
+    storyText = replaceText("<monsters>", withText: monsters, inString: storyText)
     
     return storyText
   }
   
-    private func replaceText(needle: String, haystack: String, text: String) -> String {
-        return text.stringByReplacingOccurrencesOfString(needle, withString: haystack, options: NSStringCompareOptions.LiteralSearch, range: nil)
-    }
+  private func replaceText(text: String, withText: String, inString: String) -> String {
+    return inString.stringByReplacingOccurrencesOfString(text, withString: withText, options: NSStringCompareOptions.LiteralSearch, range: nil)
+  }
   
   
 }

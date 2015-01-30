@@ -2,56 +2,66 @@
 //  Story.swift
 //  StoryTime
 //
-//  Created by Brian Moakley on 11/25/14.
-//  Copyright (c) 2014 Tammy Coron. All rights reserved.
+//  Created by Brian Moakley on 1/30/15.
+//  Copyright (c) 2015 Tammy Coron. All rights reserved.
 //
 
 import Foundation
 
 enum StoryType {
-    case zombies, vampires
+  case zombies, vampires
 }
 
-class Story
-{
-    var title : String
-    var name : String?
-    var verb : String?
-    var number : Int?
-    var winStory: String
-    var loseStory: String
-    var type: StoryType
+class Story {
+  
+  var title: String
+  var name: String?
+  var verb: String?
+  var number: Int?
+  var winStory: String?
+  var loseStory: String?
+  var type: StoryType
+  
+  init(title: String, winStory: String, loseStory:String, type: StoryType) {
+    self.title = title
+    self.winStory = winStory
+    self.loseStory = loseStory
+    self.type = type
+  }
+  
+  func generateStory(monstersWin: Bool) -> String {
+    var storyText = ""
     
-    init(title: String, winStory:String, loseStory: String, type: StoryType) {
-        self.title = title
-        self.winStory = winStory
-        self.loseStory = loseStory
-        self.type = type
+    if monstersWin {
+      if let winStory = winStory {
+        storyText = winStory
+      }
+    } else {
+      if let loseStory = loseStory {
+        storyText = loseStory
+      }
+    }
+    var monsters = "zombies"
+    if type == .vampires {
+      monsters = "vampires"
     }
     
-    func generateStory(monstersWin: Bool) -> String {
-        var storyText = loseStory
-        if monstersWin {
-            storyText = winStory
-        }
-        var monsters = "zombies"
-        if type == .vampires {
-            monsters = "vampires"
-        }
-        
-        if verb != nil {
-            storyText = storyText.stringByReplacingOccurrencesOfString("<verb>", withString: verb!, options: NSStringCompareOptions.LiteralSearch, range: nil)
-        }
-        if number != nil {
-            storyText = storyText.stringByReplacingOccurrencesOfString("<number>", withString: String(number!), options: NSStringCompareOptions.LiteralSearch, range: nil)
-        }
-        if name != nil {
-            storyText = storyText.stringByReplacingOccurrencesOfString("<name>", withString: name!, options: NSStringCompareOptions.LiteralSearch, range: nil)
-        }
-        storyText = storyText.stringByReplacingOccurrencesOfString("<monsters>", withString: monsters, options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
-        return storyText
+    if verb != nil {
+      storyText = replaceText("<verb>", withText: verb!, inString: storyText)
     }
+    if number != nil {
+      storyText = replaceText("<number>", withText: String(number!), inString: storyText)
+    }
+    if name != nil {
+      storyText = replaceText("<name>", withText: name!, inString: storyText)
+    }
+    storyText = replaceText("<monsters>", withText: monsters, inString: storyText)
     
-    
+    return storyText
+  }
+  
+  private func replaceText(text: String, withText: String, inString: String) -> String {
+    return inString.stringByReplacingOccurrencesOfString(text, withString: withText, options: NSStringCompareOptions.LiteralSearch, range: nil)
+  }
+  
 }
