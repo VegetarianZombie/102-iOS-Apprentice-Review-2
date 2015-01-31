@@ -418,7 +418,7 @@
                         <outlet property="monsterType" destination="MMf-W2-7u5" id="ywj-6Z-efK"/>
                         <outlet property="storyTitle" destination="bve-EZ-8bT" id="4bk-Ih-W12"/>
                         <outlet property="winningStory" destination="asm-sI-PNN" id="wsH-ON-5DM"/>
-                        <segue destination="l8x-7t-QsP" kind="unwind" unwindAction="close:" id="YRa-VT-uIp"/>
+                        <segue destination="l8x-7t-QsP" kind="unwind" identifier="DismissNewStory" unwindAction="close:" id="YRa-VT-uIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Io-4q-HfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
