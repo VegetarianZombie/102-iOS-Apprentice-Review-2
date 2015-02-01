@@ -43,6 +43,14 @@ class NewStoryViewController: UIViewController, UITextFieldDelegate, UITextViewD
     view.endEditing(true)
   }
   
+  
+  func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    if text == "\n" {
+      dismissKeyboard()
+    }
+    return true;
+  }
+  
   @IBAction func save(sender: AnyObject) {
     if !storyTitle.text.isEmpty && !winningStory.text.isEmpty && !losingStory.text.isEmpty {
       var storyType: StoryType!

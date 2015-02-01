@@ -15,7 +15,7 @@ body{-webkit-font-smoothing:antialiased;font-family:"Helvetica Neue",Helvetica,A
 </style>
 
 </head>
-<body class="normal firstload">
+<body class="normal">
   <div id="wrapper">
       <h1 id="iosapprenticereview2part3:labinstructions">iOS Apprentice Review 2 Part 3: Lab Instructions</h1>
 
@@ -29,13 +29,25 @@ body{-webkit-font-smoothing:antialiased;font-family:"Helvetica Neue",Helvetica,A
 
 <p>This view controller allows you to create a new story by providing a title, a winning story, and a losing story.</p>
 
-<h3 id="step1:createthecontrollerfile">Step 1: Create the Controller File</h3>
+<h3 id="step1:addabarbuttonitem">Step 1: Add a Bar Button Item</h3>
+
+<p>Open <strong>Main.storyboard</strong> and in the object library, look for a Bar Button Item. Drag it to the navigation bar of the Story Selection View Controller. </p>
+
+<p>With the bar button selected, open the Attributes Inspector and change Identifier to <strong>Add</strong>. </p>
+
+<p>Select the bar button item, and control click from it to the New Story View Controller. </p>
+
+<p>Select the <strong>Present Modally</strong> option. Next, select the segue and in the Attributes Inspector, give it the Identifier: <strong>NewStory</strong>.</p>
+
+<p>Build and run. You should now be able access the new view controller</p>
+
+<h3 id="step2:createthecontrollerfile">Step 2: Create the Controller File</h3>
 
 <p>Select <strong>File / New / File</strong>. Select <strong>Source</strong>, then choose <strong>Cocoa Touch Class</strong>. For the class name, write <strong>NewStoryViewController</strong>. Make sure it is a subclass of a <strong>UIViewController</strong> and that the Language is <strong>Swift</strong>. Click <strong>Next</strong>, then <strong>Create</strong>.</p>
 
 <h3 id="step2:addtheoutlets">Step 2: Add the Outlets</h3>
 
-<p>Open <strong>Main.storyboard</strong>. Select your new <strong>View Controller</strong>, and in the Identity inspector, set the class to be <strong>NewStoryViewController</strong>.</p>
+<p>Open <strong>Main.storyboard</strong>. Select your new View Controller, and in the Identity inspector, set the class to be <strong>NewStoryViewController</strong>.</p>
 
 <p>Next, open the Assistant Editor, and create IBOutlets for the following controls: <code>storyTitle (Text Field)</code>, <code>monsterType (Segmented Control)</code>, <code>winningStory (Text View)</code>, <code>losingStory (Text View)</code>, <code>backgroundImage (Image View)</code>.</p>
 
@@ -46,34 +58,39 @@ body{-webkit-font-smoothing:antialiased;font-family:"Helvetica Neue",Helvetica,A
 <p>Switch back to NewStoryViewController.swift. Underneath your IBOutlets, add the following properties:</p>
 
 <pre><code>var newStory: Story?  
-var didCancel: Bool = false</code></pre>
+var didCancel: Bool = false
+</code></pre>
+
+<p>The <code>newStory</code> will contain the story the user will add. </p>
+
+<p>The <code>didCancel</code> property lets the calling View Controller know that user did not save and that the story should be discarded.</p>
 
 <h3 id="step4:createsomeibactions">Step 4: Create Some IBActions</h3>
 
 <p>Typically, you create your IBActions in your storyboard and then fill out the bodies in code. In these examples, you’ll do the reverse. With NewStoryViewController.swift open, add the following IBAction that saves the changes made by the user:</p>
 
-<pre><code>@IBAction func save(sender: AnyObject) {  
-    if !storyTitle.text.isEmpty &amp;&amp; !winningStory.text.isEmpty &amp;&amp; !losingStory.text.isEmpty {  
-        var storyType: StoryType!  
-        if monsterType.selectedSegmentIndex == 0 {  
-            storyType = StoryType.zombies  
-        } else {  
-            storyType = StoryType.vampires  
-        }        newStory = Story(title: storyTitle.text, winStory: winningStory.text, loseStory: losingStory.text, type: storyType)  
-        performSegueWithIdentifier(&quot;DismissNewStory&quot;, sender: nil)  
+<pre><code>@IBAction func save(sender: AnyObject!) {  
+    if !storyTitle.text.isEmpty &amp;&amp; !winningStory.text.isEmpty &amp;&amp;  !losingStory.text.isEmpty {  
+        println(&quot;save story!&quot;)  
+       // Future code goes here...  
     } else {  
-        let alert = UIAlertController(title: &quot;Validation Error&quot;, message: &quot;Please fill out all of the fields.&quot;, preferredStyle: UIAlertControllerStyle.Alert)  
-        let alertAction = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler:nil)  
-        alert.addAction(alertAction)  
-        presentViewController(alert, animated: false, completion:nil)  
-    }}</code></pre>
+       let alert = UIAlertController(title: &quot;Validation Error&quot;, message: &quot;Please fill out all of the fields.&quot;, preferredStyle:.Alert)  
+       let alertAction = UIAlertAction(title: &quot;OK&quot;, style: .Default, handler:nil)  
+       alert.addAction(alertAction)  
+       presentViewController(alert, animated: false, completion:nil)  
+    }}
+</code></pre>
 
-<p>Notice that you are calling a new Segue? Don’t worry, you’ll add it in just a second. Now add the cancel action.</p>
+<p>The method checks if all the text fields and text views have content in them and if they don’t, the user is notified of the error.</p>
+
+<p>Now put in the code to cancel the story. </p>
 
 <pre><code>@IBAction func cancelStory(sender: AnyObject!) {  
     didCancel = true  
     performSegueWithIdentifier(&quot;DismissNewStory&quot;, sender: nil)  
 }</code></pre>
+
+<p>For now, this is more of a stub. Later you’ll add some additional code.</p>
 
 <p>Now to change the background image when the user selects a different story type.</p>
 
@@ -82,19 +99,23 @@ var didCancel: Bool = false</code></pre>
         backgroundImage.image = UIImage(named: &quot;zombies&quot;)  
     } else {  
         backgroundImage.image = UIImage(named: &quot;vampires&quot;)  
-    }}
-</code></pre>
+    }}</code></pre>
 
 <p>With all the IBActions created, switch back to <strong>Main.storyboard</strong>. Select the <strong>Segmented Control</strong>, and control click it. You should see a list of actions. At the end of the Value Changed action, drag the circle to the main New Story View Controller.</p>
 
 <p>From the resulting dropdown, select the <code>changeMonsterType:</code> action. For the cancel button, control click and drag from <strong>Touch Up Inside</strong>. Select <code>cancelStory:</code>. Finally, for the save button, control drag from Touch Up Inside and select <code>save:</code>.</p>
+
+<p>Build and run. First, try to create a blank story and try to submit it. You should see an alert message letting you know that it didn’t succeed. </p>
+
+<p>Now, fill out all the fields with junk data. You’ll see that you can’t dismiss the keyboard. Time to fix that.</p>
 
 <h3 id="step5:dismissingthekeyboard">Step 5: Dismissing the Keyboard</h3>
 
 <p>While this new view controller works, users will not be able to dismiss the keyboard. Switch back to <strong>NewStoryViewController.swift</strong>, and add the following code in <code>viewDidLoad()</code>:</p>
 
 <pre><code>let tapGesutureRecognizer = UITapGestureRecognizer(target: self, action: &quot;dismissKeyboard&quot;)  
-view.addGestureRecognizer(tapGesutureRecognizer)</code></pre>
+view.addGestureRecognizer(tapGesutureRecognizer)
+</code></pre>
 
 <p>Gesture recognizers make sure a great way handle to touch controls. In this case, a simple tap gesture will call <code>dismissKeyboard()</code>. Add the following method:</p>
 
@@ -108,36 +129,37 @@ view.addGestureRecognizer(tapGesutureRecognizer)</code></pre>
 <p>Finally, you need to add code to dismiss the keyboard when the user taps the return key.<br/>
 At the top of the file, change the class definition to look like the following:</p>
 
-<pre><code>class NewStoryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate { </code></pre>
+<pre><code>class NewStoryViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate { 
+</code></pre>
 
 <p>Now, add the following methods:</p>
 
-<pre><code>func textViewShouldEndEditing(textView: UITextView) -&gt; Bool {  
-    textView.resignFirstResponder()  
-    return true  
+<pre><code>func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -&gt; Bool {  
+    if text == &quot;\n&quot; {  
+        dismissKeyboard()  
+    }    return true;  
 }
 func textFieldShouldReturn(textField: UITextField) -&gt; Bool {  
     textField.resignFirstResponder()  
     return true  
-}
-</code></pre>
+}</code></pre>
+
+<p>Since text views are designed for the user to use the return key, you must add a bit of logic to account for it. In your case, a return character indicates that the user is done, so you will dismiss the keyboard.<br/>
+The other method simply dismisses the keyboard.</p>
 
 <p>Open <strong>Main.storyboard</strong> and control click on the first text field. Under the list of Outlets, look for the item labeled delegate. Drag from the circle all the way to the New Story View Controller.</p>
 
 <p>Do the same for both of the text views.</p>
 
+<p>Build and run. Add a new story (you can use some of the sample stories in stories.txt), then tap a text field and the tap return. The keyboard should dismiss.</p>
+
+<p>Now when you save, you’ll see a message that reads “save story!”.</p>
+
 <h2 id="part3:tyingitalltogether">Part 3: Tying it all Together</h2>
 
-<p>Now that your view controller is all set, it’s time to hook it into the storyboard. </p>
+<p>Now that your new view controller is all set, it’s time to hook it into the storyboard. </p>
 
-<h3 id="step1:addabarbuttonitem">Step 1: Add a Bar Button Item</h3>
-
-<p>Open <strong>Main.storyboard</strong> and in the object library, look for a Bar Button Item. Drag it to the navigation bar of the Story Selection View Controller. </p>
-
-<p>With the bar button selected, open the Attributes Inspector and change Identifier to Add.<br/>
-Select the bar button item, and control click from it to the New Story View Controller. Select the Present Modally option. Next, select the segue and in the Attributes Inspector, give it the Identifier: NewStory.</p>
-
-<h3 id="step2:createtheunwindsegue">Step 2: Create the Unwind Segue</h3>
+<h3 id="step1:createtheunwindsegue">Step 1: Create the Unwind Segue</h3>
 
 <p>An unwind segue is used when you want to return to a previous view controller. In your case, you presented the New Story View Controller and once the user has created that story, you need a way to get it.</p>
 
@@ -149,19 +171,46 @@ Select the bar button item, and control click from it to the New Story View Cont
         if let story = newStoryViewController.newStory {  
             if story.type == .zombies {  
                 zombieStories.append(story)  
-            } else {  
+        } else {  
                 vampireStories.append(story)  
             }            tableView.reloadData()  
         }    }  
 }</code></pre>
 
-<p>Once have the segue added, make sure to build your project before moving to the next step.</p>
+<p>You first get an instance of the view controller that is being dismissed, then you get an instance of the new story at which point, you add it either to the zombie stories or vampire stories. With the story added, the last thing needed is to reload the table so the user can see the update.</p>
 
-<h3 id="step3:hookuptheunwindsegue">Step 3: Hook Up the Unwind Segue</h3>
+<p>Once have the segue added, make sure to build your project before moving to the next step. Sometimes, Interface Builder doesn’t realize you’ve added an unwind segue.</p>
+
+<p><strong>Step 2: Hook Up the Unwind Segue</strong></p>
 
 <p>Open <strong>Main.storyboard</strong>. In the New Story View Controller, select the yellow View Controller icon and control drag over to the last red icon. </p>
 
-<p>From the dropdown, choose the close: <strong>segue</strong>. Congratulations! You made it through the lab and have a working app!</p>
+<p>From the dropdown, choose the <code>close:</code> segue. </p>
+
+<h3 id="step4:givethesegueaname">Step 4: Give the Segue a Name</h3>
+
+<p>Select the new segue in the Document Outline. </p>
+
+<p>In the Attributes Inspector, call it “<strong>DismissNewStory</strong>”.</p>
+
+<h3 id="step3:callthesegue">Step 3: Call the Segue</h3>
+
+<p>In <strong>NewStoryViewController.swift</strong>, change <code>cancelStory (sender:)</code> to look like the following:</p>
+
+<pre><code>@IBAction func cancelStory(sender: AnyObject!) {  
+    didCancel = true  
+    performSegueWithIdentifier(&quot;DismissNewStory&quot;, sender: nil)  
+}
+</code></pre>
+
+<p>In <code>save(sender:)</code>, remove the <code>println()</code> statement and the comment underneath it. Next add the following code:</p>
+
+<pre><code>performSegueWithIdentifier(&quot;DismissNewStory&quot;, sender: nil)
+</code></pre>
+
+<p>This will call the unwind segue and save the story (or not as the case may be). Build and run and add a new story. You can find a couple of stories in <strong>stories.txt</strong>. </p>
+
+<p>Congratulations! You made it through the lab and have a working app!</p>
 <!-- ##END MARKED WRAPPER## -->
     </div>
 </body>
